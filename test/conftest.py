@@ -5,7 +5,7 @@ from playwright.sync_api import sync_playwright, Page
 @pytest.fixture()
 def context_and_page() -> Page:
     with sync_playwright() as playwright:
-        print(f"Launching new incognito browser instance")
+        print(f"Launching new incognito browser instance...")
 
         browser = playwright.chromium.launch()
 
@@ -22,5 +22,5 @@ def page(context_and_page: Page) -> Page:
 
 
 @pytest.fixture()
-def mock_musical_id() -> int:
+def mock_show_id() -> int:
     return 1289
