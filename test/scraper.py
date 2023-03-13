@@ -39,9 +39,9 @@ def test_get_character_listing(page: Page, mock_show_id: int):
     page = goto_show_page(page, show_id=mock_show_id)
     normalized_musical_name = get_normalized_show_name(page)
 
-    page = goto_characters_page(page, show_id=mock_show_id, show_name=normalized_musical_name)
+    characters_page = goto_characters_page(page, show_id=mock_show_id, show_name=normalized_musical_name)
     
-    character_listing = get_character_listing_list(page)
+    character_listing = get_character_listing_list(characters_page)
 
     # Assert the characters list isn't empty, and that each character_listing contains some HTML.
     assert len(character_listing) > 0
@@ -53,9 +53,9 @@ def test_get_character_url(page: Page, mock_show_id: int):
     page = goto_show_page(page, show_id=mock_show_id)
     normalized_musical_name = get_normalized_show_name(page)
 
-    page = goto_characters_page(page, show_id=mock_show_id, show_name=normalized_musical_name)
+    characters_page = goto_characters_page(page, show_id=mock_show_id, show_name=normalized_musical_name)
     
-    character_listing = get_character_listing_list(page)
+    character_listing = get_character_listing_list(characters_page)
     character_urls = list(map(get_character_url, character_listing))
 
     assert "https://www.stageagent.com/characters/2987/wicked/galinda-glinda" in character_urls

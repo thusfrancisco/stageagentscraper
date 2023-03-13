@@ -29,13 +29,14 @@ def goto_characters_page(page: Page, show_id: int, show_name: str, category: str
     return page
 
 
-def get_character_table_locator(page: Page) -> Locator:
-    return page.locator('div[id="characters"]')
+def get_character_table_locator(characters_page: Page) -> Locator:
+    return characters_page.locator('div[id="characters"]')
 
 
-def get_character_listing_list(page: Page) -> list:
-    return page.locator('div.character-listing').all()
+def get_character_listing_list(characters_page: Page) -> list:
+    return characters_page.locator('div.character-listing').all()
 
 
 def get_character_url(character_listing: Locator) -> str:
     return "https://www.stageagent.com" + character_listing.locator('div.actor-name>span').inner_html().split("\"")[1]
+
